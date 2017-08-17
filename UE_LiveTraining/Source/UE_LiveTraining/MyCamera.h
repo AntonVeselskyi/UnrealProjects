@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Camera/CameraActor.h"
 #include "Classes/Kismet/KismetMathLibrary.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "DrawDebugHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "MyCamera.generated.h"
 
@@ -27,7 +29,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	//debug info
-	UPROPRTY(EditAnyWhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		uint8 bShowDebugInfo : 1;
 	
 	//distanse between camera and object
