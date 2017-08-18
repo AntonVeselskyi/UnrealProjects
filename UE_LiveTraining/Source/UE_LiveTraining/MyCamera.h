@@ -43,4 +43,7 @@ public:
 	//max speed of camera korektirovanie, for all axis
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float CameraSpeedLimiter;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+        FVector CameraDistanceLimiter_PerAxis;
 };

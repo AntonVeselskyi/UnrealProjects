@@ -37,7 +37,19 @@ void AMyCamera::Tick(float DeltaTime)
         FVector DeltaLocation = IdealLocation - CurrentLocation; //how much we should go on
         FVector MaxMovementThisFrame_PerAxis = CameraSpeed_PerAxis * DeltaTime; 
         FVector DesiredMovementThisFrame; //movement that I want
-
+        FVector MovementThisFrameDueToCap = FVector::ZeroVector;
+        
+        //make sure the camera doesn`t go to far
+        {
+            for (int32 i = 0; i < 3; ++i)
+            {
+                if (FMath::Abs(DeltaLocation.Component(i)) > CameraDistanceLimiter_PerAxis.Component(i))
+                {
+                    MovementThisFrameDueToCap.Component(i) = FMath::Sign(DeltaLocation.Component(i)) * (FMath::Abs(DeltaLocation.Component(i)) - CameraDistanceLimiter_PerAxis.Component(i));
+                    DeltaLocation.Component(i) = FMath::Clamp(DeltaLocation.Component(i), -CameraDistanceLimiter_PerAxis.Component(i), CameraDistanceLimiter_PerAxis.Component(i));
+                }
+            }
+        }
         //manage the offset (здвиг) between desired and current camera position
         {
             //Limit per-axis offset
@@ -51,7 +63,7 @@ void AMyCamera::Tick(float DeltaTime)
         }
 
         //Apply all movment values
-        SetActorLocation(CurrentLocation + DesiredMovementThisFrame);
+        SetActorLocation(CurrentLocation + DesiredMovementThisFrame + MovementThisFrameDueToCap);
         
 #if !UE_BUILD_SHIPPING
         if (bShowDebugInfo)
@@ -59,7 +71,7 @@ void AMyCamera::Tick(float DeltaTime)
             if (!DesiredMovementThisFrame.IsNearlyZero())
             {
                 FVector DebugLineOffset = FVector(0.0f, 0.0f, -IdealOffset.Z);
-                DrawDebugLine(GetWorld(), CurrentLocation + DebugLineOffset, CurrentLocation + DesiredMovementThisFrame, FColor::Red);
+                DrawDebugLine(GetWorld(), CurrentLocation + DebugLineOffset, CurrentLocation + DesiredMovementThisFrame + DebugLineOffset, FColor(255, 0, 0), false, 10, 0, 9 );
             }
         }
 #endif
