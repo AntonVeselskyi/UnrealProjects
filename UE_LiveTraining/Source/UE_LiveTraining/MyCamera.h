@@ -46,4 +46,8 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
         FVector CameraDistanceLimiter_PerAxis;
+
+		//max distance between camera and pawn
+		UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float 	CameraDistanceLimiter;
 };

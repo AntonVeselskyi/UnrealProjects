@@ -39,8 +39,22 @@ void AMyCamera::Tick(float DeltaTime)
         FVector DesiredMovementThisFrame; //movement that I want
         FVector MovementThisFrameDueToCap = FVector::ZeroVector;
         
-        //make sure the camera doesn`t go to far
-        {
+       
+		//make sure the camera doesn`t go away to far
+		//clip (obrezat`) by radius
+		{
+			FVector Direction;
+			float Length;
+			DeltaLocation.ToDirectionAndLength(Direction, Length);
+			if (Length > CameraDistanceLimiter)
+			{
+				FVector CapVector = (Length - CameraDistanceLimiter) * Directrion;
+				MovementThisFrameDueToCap += CapVector;
+				DeltaLocation -= CapVector;
+			}
+		}
+		//clip axis
+		{
             for (int32 i = 0; i < 3; ++i)
             {
                 if (FMath::Abs(DeltaLocation.Component(i)) > CameraDistanceLimiter_PerAxis.Component(i))
@@ -50,6 +64,7 @@ void AMyCamera::Tick(float DeltaTime)
                 }
             }
         }
+
         //manage the offset (здвиг) between desired and current camera position
         {
             //Limit per-axis offset
@@ -68,10 +83,17 @@ void AMyCamera::Tick(float DeltaTime)
 #if !UE_BUILD_SHIPPING
         if (bShowDebugInfo)
         {
-            if (!DesiredMovementThisFrame.IsNearlyZero())
+            if (!DesiredMovementThisFrame.IsNearlyZero() && UWorld* World = GetWorld())
             {
                 FVector DebugLineOffset = FVector(0.0f, 0.0f, -IdealOffset.Z);
-                DrawDebugLine(GetWorld(), CurrentLocation + DebugLineOffset, CurrentLocation + DesiredMovementThisFrame + DebugLineOffset, FColor(255, 0, 0), false, 10, 0, 9 );
+				FVector NewLocation = GetActorLocation();
+				//camera path
+                DrawDebugLine(World, CurrentLocation + DebugLineOffset, CurrentLocation + DesiredMovementThisFrame + DebugLineOffset, FColor(255, 0, 0), true, 10, 0, 10 );
+				//box axis clip
+				DrawDebugBox(World, NewLocation + DebugLineOffset, CameraDistanceLimiter_PerAxis, FColor::Green, false,-1,1,10);
+				//radius clip
+				FMatrix CircleMatrix = FMatrix(FVector::UpVector, Fvector::ForwardVector, FVector::RightVector, NewLocation + DebugLineOffset)
+				DrawDebugCircle(World, CircleMatrix, CameraDistanseLimiter, 64, FColor::Green, false, -1,1,10)
             }
         }
 #endif
