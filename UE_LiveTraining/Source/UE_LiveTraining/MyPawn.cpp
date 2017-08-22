@@ -55,7 +55,7 @@ void AMyPawn::Tick(float DeltaTime)
 	{
 		if (!CurrentVelocity.IsZero())
 		{
-			FVector NewLocation = GetActorLocation() + (9 *CurrentVelocity * DeltaTime);
+			FVector NewLocation = GetActorLocation() + (10 *CurrentVelocity * DeltaTime);
 			SetActorLocation(NewLocation);
 		}
 	}

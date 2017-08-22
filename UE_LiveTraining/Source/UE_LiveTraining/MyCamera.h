@@ -1,6 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 
-#pragma once
+#pragma once //the best :)
+//material for this code was taken from this video
+//https://www.youtube.com/watch?v=lL89frGkM4g
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -10,6 +11,35 @@
 #include "DrawDebugHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "MyCamera.generated.h"
+
+UENUM(Meta = (Bitflags))
+enum class ECameraAxes
+{
+    ECCA_X UMETA(DisplayName = "X Axis"),
+    ECCA_Y UMETA(DisplayName = "Y Axis"),
+    ECCA_Z UMETA(DisplayName = "Z Axis"),
+
+    ECCA_Radius UMETA(DisplayName = "Polar (radius)")
+};
+
+USTRUCT()
+struct FCameraSpeedAdjustment //korektirovanie
+{
+    GENERATED_BODY()
+
+        //this adjuster will work when (this.X < CameraDesiredDistance <this.Y)
+        UPROPERTY(EditAnywhere) //we use 2d vector because it`s interval from a to b (30-50pxls) 
+        FVector2D DistanceRange;
+
+    //this multiplier will be used based om a direct maping to camera distance`s value
+    UPROPERTY(EditAnywhere)
+        FVector2D SpeedMultiplierRange;
+
+    //if checked, this adjustment applies to the X axis
+    UPROPERTY(EditAnywhere, Meta = (Bitmask, BitmaskEnum = "ECameraAxes"))
+        int32 AxisFlags;
+
+};
 
 UCLASS()
 class UE_LIVETRAINING_API AMyCamera : public ACameraActor
@@ -38,7 +68,7 @@ public:
 
 	//max speed of camera korektirovanie, per axis
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FVector CameraSpeed_PerAxis;
+		FVector CameraSpeedLimiter_PerAxis;
 
 	//max speed of camera korektirovanie, for all axis
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -47,7 +77,14 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
         FVector CameraDistanceLimiter_PerAxis;
 
+
 		//max distance between camera and pawn
 		UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float 	CameraDistanceLimiter;
+		float 	CameraDistanceLimiter = MAX_FLT;
+
+        //speed adjustment. When the camera is withis one of this ranges it will be used to scale chasecamera
+        //the bigger the distance between camera and pawn, the slower camera goes away!
+        UPROPERTY(EditAnywhere, BlueprintReadWrite)
+        TArray<FCameraSpeedAdjustment> SpeedAdjusters;
 };
+
