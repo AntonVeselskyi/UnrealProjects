@@ -1,0 +1,3 @@
+D:\projects\UProjects\UE_LiveTraining\Source\UE_LiveTraining\UE_LiveTraining.Build.cs
+D:\projects\UProjects\UE_LiveTraining\Source\UE_LiveTraining.Target.cs
+D:\projects\UProjects\UE_LiveTraining\Source\UE_LiveTrainingEditor.Target.cs
