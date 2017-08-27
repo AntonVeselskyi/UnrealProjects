@@ -1,0 +1,17 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-UE_LiveTraining-6539.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\projects\Unreal\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\MyCamera.cpp.obj"
+"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\MyPawn.cpp.obj"
+"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\UE_LiveTraining.cpp.obj"
+"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\UE_LiveTrainingGameModeBase.cpp.obj"
+"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\UE_LiveTraining.generated.cpp.obj"
+"D:\projects\Unreal\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE_LiveTraining\PCLaunch.rc.res"
+"D:\projects\Unreal\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"D:\projects\UProjects\UE_LiveTraining\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-UE_LiveTraining-6539.lib"
