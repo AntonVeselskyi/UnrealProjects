@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{C4C70D02-45E3-06F2-B41B-169D01B78F1D}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "UE_PlgnStateMachine",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

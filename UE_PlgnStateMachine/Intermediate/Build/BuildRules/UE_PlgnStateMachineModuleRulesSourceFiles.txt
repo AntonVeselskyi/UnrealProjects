@@ -1,0 +1,3 @@
+D:\projects\UnrealProjects\UE_PlgnStateMachine\Source\UE_PlgnStateMachine\UE_PlgnStateMachine.Build.cs
+D:\projects\UnrealProjects\UE_PlgnStateMachine\Source\UE_PlgnStateMachine.Target.cs
+D:\projects\UnrealProjects\UE_PlgnStateMachine\Source\UE_PlgnStateMachineEditor.Target.cs
