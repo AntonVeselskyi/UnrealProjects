@@ -11,7 +11,9 @@ My unreal engine 4 projects
 2. build it in VS
 3. open project in UE4
 
-BlueprintBasics done in UE 4.16
-CameraTraining(UE 4.16)
-ULevels done in UE 4.17
+* :clipboard: BlueprintBasics done in UE 4.16
+* :movie_camera: CameraTraining(UE 4.16)
+
+* :mount_fuji: ULevels done in UE 4.17 with starter content
+
 
