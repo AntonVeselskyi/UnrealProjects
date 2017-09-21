@@ -13,7 +13,7 @@ My unreal engine 4 projects
 
 * :clipboard: BlueprintBasics done in UE 4.16
 * :movie_camera: CameraTraining(UE 4.16)
-
+* :gun: FPS_Essentials(UE 4.17)
 * :mount_fuji: ULevels done in UE 4.17 with starter content
 
 

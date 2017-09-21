@@ -1,0 +1,17 @@
+﻿  Compiling game modules for hot reload
+  Parsing headers for FPSProjectEditor
+    Running UnrealHeaderTool "D:\UnrealEngine4\UnrealProjects\FPSProject\FPSProject.uproject" "D:\UnrealEngine4\UnrealProjects\FPSProject\Intermediate\Build\Win64\FPSProjectEditor\Development\FPSProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+  Reflection code generated for FPSProjectEditor in 5,347976 seconds
+  Performing 4 actions (4 in parallel)
+  FPSProject.generated.cpp
+  FunCube.cpp
+D:\UnrealEngine4\UnrealProjects\FPSProject\Source\FPSProject\FunCube.cpp(16): warning C4996: 'USceneComponent::AttachTo': This function is deprecated, please use AttachToComponent instead. Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+  D:\UnrealEngine4\UE_4.16\Engine\Source\Runtime\Engine\Classes\Components/SceneComponent.h(615): note:  см. объявление "USceneComponent::AttachTo"
+D:\UnrealEngine4\UnrealProjects\FPSProject\Source\FPSProject\FunCube.cpp(24): warning C4996: 'USceneComponent::AttachTo': This function is deprecated, please use AttachToComponent instead. Please update your code to the new API before upgrading to the next release, otherwise your project will no longer compile.
+  D:\UnrealEngine4\UE_4.16\Engine\Source\Runtime\Engine\Classes\Components/SceneComponent.h(615): note:  см. объявление "USceneComponent::AttachTo"
+  [3/4] Link UE4Editor-FPSProject-2726.dll
+  [4/4] Link UE4Editor-FPSProject-2726.lib
+     ╤ючфрхЄё  сшсышюЄхър D:\UnrealEngine4\UnrealProjects\FPSProject\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FPSProject-2726.lib ш юс·хъЄ D:\UnrealEngine4\UnrealProjects\FPSProject\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FPSProject-2726.exp
+     ╤ючфрхЄё  сшсышюЄхър D:\UnrealEngine4\UnrealProjects\FPSProject\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FPSProject-2726.suppressed.lib ш юс·хъЄ D:\UnrealEngine4\UnrealProjects\FPSProject\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-FPSProject-2726.suppressed.exp
+  Deploying FPSProjectEditor Win64 Development...
+  Total build time: 164,99 seconds (Local executor: 137,75 seconds)
